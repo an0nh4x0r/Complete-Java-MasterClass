@@ -95,7 +95,7 @@ public class Main {
         ArrayList<String> nextArray = new ArrayList<String>(groceryList.getGroceryList());
 
 //        One way of copying contents of ArrayList to another Array.
-        Integer[] myArray = new Integer[groceryList.getGroceryList().size()];
+        String[] myArray = new String[groceryList.getGroceryList().size()];
         myArray = groceryList.getGroceryList().toArray(myArray);
     }
 }
