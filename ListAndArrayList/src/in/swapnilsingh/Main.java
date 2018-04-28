@@ -1,5 +1,6 @@
 package in.swapnilsingh;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -36,6 +37,9 @@ public class Main {
                     searchForItem();
                     break;
                 case 6:
+                    processArrayList();
+                    break;
+                case 7:
                     quit = true;
                     break;
             }
@@ -59,28 +63,39 @@ public class Main {
     }
 
     public static void modifyItem() {
-        System.out.println("Enter item number: ");
-        int itemNo = scanner.nextInt();
-        scanner.nextLine();
+        System.out.println("Current item name: ");
+        String currentItem = scanner.nextLine();
         System.out.println("Enter replacement item: ");
         String newItem = scanner.nextLine();
-        groceryList.modifyGroceryItem(itemNo, newItem);
+        groceryList.modifyGroceryItem(currentItem, newItem);
     }
 
     public static void removeItem() {
-        System.out.println("Enter item number: ");
-        int itemNo = scanner.nextInt();
-        scanner.nextLine();
-        groceryList.removeGroceryItem(itemNo);
+        System.out.println("Enter item name: ");
+        String itemName = scanner.nextLine();
+        groceryList.removeGroceryItem(itemName);
     }
 
     public static void searchForItem() {
         System.out.println("Item to search for: ");
         String searchItem = scanner.nextLine();
-        if(groceryList.findItem(searchItem) != null) {
-            System.out.println("Found " + searchItem + " in our grocery list");
+        if(groceryList.onFile(searchItem)) {
+            System.out.println("Found " + searchItem + " in on File");
         } else {
-            System.out.println(searchItem + " is not in our grocery list.");
+            System.out.println(searchItem + " is not on File.");
         }
+    }
+
+    public static void processArrayList() {
+//        One way of copying elements of one ArrayList to another ArrayList.
+        ArrayList<String> newArray = new ArrayList<String>();
+        newArray.addAll(groceryList.getGroceryList());
+
+//        Second way of copying contents of ArrayList to another ArrayList.
+        ArrayList<String> nextArray = new ArrayList<String>(groceryList.getGroceryList());
+
+//        One way of copying contents of ArrayList to another Array.
+        Integer[] myArray = new Integer[groceryList.getGroceryList().size()];
+        myArray = groceryList.getGroceryList().toArray(myArray);
     }
 }
