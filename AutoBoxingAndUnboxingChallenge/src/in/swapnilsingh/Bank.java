@@ -1,6 +1,5 @@
 package in.swapnilsingh;
 
-import javax.sql.rowset.spi.TransactionalWriter;
 import java.util.ArrayList;
 
 public class Bank {
